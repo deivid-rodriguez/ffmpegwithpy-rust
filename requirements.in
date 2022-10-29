@@ -1,0 +1,9 @@
+pip-tools
+maturin
+pytest
+black
+isort
+flake8
+Flake8-pyproject
+mypy
+taskipy
