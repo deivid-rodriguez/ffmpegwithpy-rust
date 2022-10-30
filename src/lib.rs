@@ -16,7 +16,7 @@ fn get_filename(filepath: &str, file_format: &str) -> String {
 
 fn ffmpeg_cmd(filepath: &str, file_format: &str) -> String {
     let after_filename = get_filename(filepath, file_format);
-    let cmd = "ffmpeg".to_owned() + " " + filepath + " " + &after_filename;
+    let cmd = "ffmpeg".to_owned() + " -i " + filepath + " " + &after_filename;
 
     return cmd;
 }
@@ -52,7 +52,29 @@ impl FFmpeg {
     }
 
     fn ffmpeg(&self) {
-        Command::new(ffmpeg_cmd(&self.filepath, &self.file_format));
+        if cfg!(target_os = "windows") {
+            Command::new("cmd")
+                .arg("/C")
+                .args([
+                    "ffmpeg",
+                    "-i",
+                    &self.filepath,
+                    &get_filename(&self.filepath, &self.file_format),
+                ])
+                .output()
+                .expect("ffmpeg command failed to start");
+        } else {
+            Command::new("sh")
+                .arg("-c")
+                .args([
+                    "ffmpeg",
+                    "-i",
+                    &self.filepath,
+                    &get_filename(&self.filepath, &self.file_format),
+                ])
+                .output()
+                .expect("ffmpeg command failed to start");
+        }
     }
 }
 
