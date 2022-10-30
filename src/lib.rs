@@ -64,10 +64,8 @@ impl FFmpeg {
                 .output()
                 .expect("ffmpeg command failed to start");
         } else {
-            Command::new("sh")
-                .arg("-c")
+            Command::new("ffmpeg")
                 .args([
-                    "ffmpeg",
                     "-i",
                     &self.filepath,
                     &get_filename(&self.filepath, &self.file_format),
