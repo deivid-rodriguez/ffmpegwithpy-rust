@@ -98,6 +98,6 @@ mod tests {
 
     #[test]
     fn test_ffmpeg_cmd() {
-        assert_eq!(ffmpeg_cmd("test.mp4", "mp3"), "ffmpeg test.mp4 test.mp3")
+        assert_eq!(ffmpeg_cmd("test.mp4", "mp3"), "ffmpeg -i test.mp4 test.mp3")
     }
 }
