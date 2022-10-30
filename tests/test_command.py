@@ -7,4 +7,4 @@ def test_get_filename():
 
 
 def test_FFmpeg_ffmpeg_cmd():
-    assert FFmpeg("test.mp4", "mp3").ffmpeg_cmd() == "ffmpeg test.mp4 test.mp3"
+    assert FFmpeg("test.mp4", "mp3").ffmpeg_cmd() == "ffmpeg -i test.mp4 test.mp3"
