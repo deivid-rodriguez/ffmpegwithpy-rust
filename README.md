@@ -13,11 +13,11 @@ pip install -r requirements.txt
 ### Develop Build
 
 ``` bash
-maturin develop
+task dev
 ```
 
-### Build Wheel
+### Build Release Wheel
 
 ``` bash
-maturin build
+maturin build --release -o dist
 ```
