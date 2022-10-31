@@ -1,6 +1,0 @@
-pip-tools
-maturin
-pytest
-black
-isort
-taskipy
