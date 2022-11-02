@@ -3,6 +3,9 @@ name: Test
 on:
   pull_request:
 
+env:
+  VIRTUAL_ENV: 1
+
 jobs:
   pytest:
     runs-on: ubuntu-latest
@@ -15,11 +18,6 @@ jobs:
         uses: actions/setup-python@v4.3.0
         with:
           python-version: '3.10'
-
-      - name: Setup venv
-        run: |
-          python -m venv .venv
-          source .venv/bin/activate
 
       - name: Install Dev dependence
         uses: messense/maturin-action@v1.30.2
