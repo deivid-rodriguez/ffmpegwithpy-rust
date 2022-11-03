@@ -3,9 +3,6 @@ name: Test
 on:
   pull_request:
 
-env:
-  VIRTUAL_ENV: 1
-
 jobs:
   pytest:
     runs-on: ubuntu-latest
@@ -14,16 +11,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      # - name: Setup Python
-      #   uses: actions/setup-python@v4.3.0
-      #   with:
-      #     python-version: '3.10'
+      - name: Setup Python
+        uses: actions/setup-python@v4.3.0
+        with:
+          python-version: '3.10'
+
+      - name: Setup rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
 
       - name: Install Dev dependence
-        uses: messense/maturin-action@v1.30.2
-        with:
-          command: develop
-          args: --extras dev
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate
+          pip install maturin
+          maturin dev --extra dev
 
       - name: Run pytest
         run: |
