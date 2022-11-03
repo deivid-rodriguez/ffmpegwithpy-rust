@@ -26,7 +26,7 @@ jobs:
           python -m venv .venv
           source .venv/bin/activate
           pip install maturin
-          maturin dev --extras dev dev
+          maturin dev --extras dev
 
       - name: Run pytest
         run: |
