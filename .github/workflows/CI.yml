@@ -18,7 +18,7 @@ jobs:
         command: build
         args: --release --sdist -o dist --find-interpreter
     - name: Upload wheels
-      uses: actions/upload-artifact@v3.1.1
+      uses: actions/upload-artifact@v3.1.2
       with:
         name: wheels
         path: dist
@@ -32,7 +32,7 @@ jobs:
         command: build
         args: --release -o dist --find-interpreter
     - name: Upload wheels
-      uses: actions/upload-artifact@v3.1.1
+      uses: actions/upload-artifact@v3.1.2
       with:
         name: wheels
         path: dist
@@ -46,7 +46,7 @@ jobs:
         command: build
         args: --release -o dist --universal2 --find-interpreter
     - name: Upload wheels
-      uses: actions/upload-artifact@v3.1.1
+      uses: actions/upload-artifact@v3.1.2
       with:
         name: wheels
         path: dist
